@@ -1,10 +1,9 @@
 #!/usr/bin/node
-const { rejects } = require("assert");
-const request = require("request");
+const request = require('request');
 
 const id = process.argv[2];
 
-function getFilmData(url) {
+function getFilmData (url) {
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
       if (error) {
@@ -16,7 +15,7 @@ function getFilmData(url) {
   });
 }
 
-function getCharacterNames(url) {
+function getCharacterNames (url) {
   return getFilmData(url).then((data) => data.name);
 }
 
@@ -29,5 +28,5 @@ getFilmData(`https://swapi-api.alx-tools.com/api/films/${id}`)
     characterName.forEach((name) => console.log(name));
   })
   .catch((error) => {
-    console.error("Error:", error);
+    console.error('Error:', error);
   });
